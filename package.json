@@ -1,0 +1,24 @@
+{
+  "name": "apiuf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurMacaubas/apiUF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurMacaubas/apiUF/issues"
+  },
+  "homepage": "https://github.com/ArthurMacaubas/apiUF#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
