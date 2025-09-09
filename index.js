@@ -1,5 +1,5 @@
 import express from "express";
-import { buscarUfs, buscarUfsPorId, buscarUfsPorNome } from "./Servicos/servico.js";
+import { buscarUfs, buscarUfsPorId, buscarUfsPorNome, buscarUfsPorSigla } from "./Servicos/servico.js";
 
 const ip = 1982;
 const app = express();
@@ -10,7 +10,7 @@ app.get('/ufs', (req, res) => {
   if (resultado.length > 0) {
     res.json(resultado);
   } else {
-    res.status(404).send({"erro" : "Nehuma UF encontrada"});
+    res.status(404).send({"erro" : "Nenhuma UF encontrada"});
   }
 });
 
@@ -19,7 +19,19 @@ app.get("/ufs/:iduf", (req, res) => {
 
   if (uf) {
     res.json(uf);
-  } else if (isNaN(parseInt(req.params,iduf))) {
+  } else if (isNaN(parseInt(req.params.iduf))) {
+    res.status(400).send({ "erro" : "Requisição Inválida!" });
+  } else {
+    res.status(404).send({ "erro" : "UF não encontrada!"});
+  }
+});
+
+app.get("/ufs/sigla/:siglaUf", (req, res) => {
+  const uf = buscarUfsPorSigla(req.params.siglaUf);
+
+  if (uf) {
+    res.json(uf);
+  } else if (isNaN(parseInt(req.params.siglaUf))) {
     res.status(400).send({ "erro" : "Requisição Inválida!" });
   } else {
     res.status(404).send({ "erro" : "UF não encontrada!"});
