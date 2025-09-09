@@ -1,5 +1,5 @@
 import express from "express";
-import { buscarUfs, buscarUfsPorId, buscarUfsPorNome, buscarUfsPorSigla } from "./Servicos/servico.js";
+import { buscarUfs, buscarUfsPorId, buscarUfsPorNome, buscarUfsPorSigla, buscarUfsPorInicial } from "./Servicos/servico.js";
 
 const ip = 1982;
 const app = express();
@@ -32,6 +32,18 @@ app.get("/ufs/sigla/:siglaUf", (req, res) => {
   if (uf) {
     res.json(uf);
   } else if (isNaN(parseInt(req.params.siglaUf))) {
+    res.status(400).send({ "erro" : "Requisição Inválida!" });
+  } else {
+    res.status(404).send({ "erro" : "UF não encontrada!"});
+  }
+});
+
+app.get("/ufs/inicial/:inicialUf", (req, res) => {
+  const uf = buscarUfsPorInicial(req.params.inicialUf);
+
+  if (uf) {
+    res.json(uf);
+  } else if (isNaN(parseInt(req.params.inicialUf))) {
     res.status(400).send({ "erro" : "Requisição Inválida!" });
   } else {
     res.status(404).send({ "erro" : "UF não encontrada!"});

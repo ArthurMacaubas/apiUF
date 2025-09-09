@@ -15,4 +15,9 @@ export const buscarUfsPorId = (id) => {
 
 export const buscarUfsPorSigla = (siglaUf) => {
     return colecaoUf.filter(uf => uf.uf.toLowerCase().includes(siglaUf.toLowerCase()));
+};
+
+export const buscarUfsPorInicial = (inicialUf) => {
+
+    return colecaoUf.filter(uf => uf.uf.toLowerCase().startsWith(inicialUf.toLowerCase()));
 }
