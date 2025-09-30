@@ -43,7 +43,7 @@ app.get("/ufs/inicial/:inicialUf", (req, res) => {
 
   if (uf) {
     res.json(uf);
-  } else if (isNaN(parseInt(req.params.inicialUf))) {
+  } else if ((parseInt(req.params.inicialUf))) {
     res.status(400).send({ "erro" : "Requisição Inválida!" });
   } else {
     res.status(404).send({ "erro" : "UF não encontrada!"});
