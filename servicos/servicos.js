@@ -4,7 +4,7 @@ export const buscarUfs = () => {
     return colecaoUf;
 }
 
-export const buscarUfsPorNome = (nomeUf) => {
+export const buscarUfsPorId = (nomeUf) => {
     return colecaoUf.filter(uf => uf.nome.toLowerCase().includes(nomeUf.toLowerCase()));
 };
 
